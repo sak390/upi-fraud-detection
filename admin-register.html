@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI Fraud Shield | Admin Registration</title>
+    <link rel="stylesheet" href="admin-register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-bg"></div>
+        <div class="floating-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Brand Section -->
+        <div class="brand-section">
+            <div class="brand-content">
+                <div class="brand-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h1 class="brand-title">Admin Registration</h1>
+                <p class="brand-tagline">Join as Administrator</p>
+                <div class="brand-features">
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Full System Access</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Manage Users & Transactions</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Configure Fraud Rules</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>View Analytics Dashboard</span>
+                    </div>
+                </div>
+                <div class="security-notice">
+                    <i class="fas fa-lock"></i>
+                    <span>Secure Admin Portal • Verification Required</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Form Section -->
+        <div class="forms-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <div class="admin-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h2>Create Admin Account</h2>
+                    <p>Please fill in all details to register as an administrator</p>
+                </div>
+                
+                <form id="adminRegisterForm" class="form">
+                    <!-- Personal Information -->
+                    <div class="form-section-title">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Personal Information</span>
+                    </div>
+                    
+                    <div class="input-field">
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <input type="text" id="adminFullName" placeholder="Full Name (as per ID proof)" required>
+                        <div class="input-border"></div>
+                    </div>
+                    
+                    <div class="input-row">
+                        <div class="input-field half">
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <input type="email" id="adminEmail" placeholder="Email Address" required>
+                            <div class="input-border"></div>
+                        </div>
+                        
+                        <div class="input-field half">
+                            <div class="input-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <input type="tel" id="adminPhone" placeholder="Phone Number (10 digits)" required>
+                            <div class="input-border"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-row">
+                        <div class="input-field half">
+                            <div class="input-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <input type="date" id="adminDob" placeholder="Date of Birth" required>
+                            <div class="input-border"></div>
+                        </div>
+                        
+                        <div class="input-field half">
+                            <div class="input-icon">
+                                <i class="fas fa-venus-mars"></i>
+                            </div>
+                            <select id="adminGender" required>
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="input-border"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Professional Information -->
+                    <div class="form-section-title">
+                        <i class="fas fa-briefcase"></i>
+                        <span>Professional Information</span>
+                    </div>
+                    
+                    <div class="input-field">
+                        <div class="input-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <input type="text" id="adminId" placeholder="Employee ID / Admin ID" required>
+                        <div class="input-border"></div>
+                    </div>
+                    
+                    <div class="input-row">
+                        <div class="input-field half">
+                            <div class="input-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                    <!-- Security Information -->
+                    <div class="form-section-title">
+                        <i class="fas fa-lock"></i>
+                        <span>Security Information</span>
+                    </div>
+                    
+                    <div class="input-field">
+                        <div class="input-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <input type="password" id="adminPassword" placeholder="Create Password" required>
+                        <div class="input-border"></div>
+                        <div class="password-hint">
+                            <i class="fas fa-info-circle"></i> 
+                            Minimum 8 characters with uppercase, lowercase, number & special character
+                        </div>
+                    </div>
+                    
+                    <div class="input-field">
+                        <div class="input-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <input type="password" id="adminConfirmPassword" placeholder="Confirm Password" required>
+                        <div class="input-border"></div>
+                    </div>
+                    
+                    <div class="password-strength" id="passwordStrength">
+                        <div class="strength-bar"></div>
+                        <div class="strength-bar"></div>
+                        <div class="strength-bar"></div>
+                        <div class="strength-bar"></div>
+                        <span class="strength-text">Password strength</span>
+                    </div>
+                    
+                   
+                 
+                    
+                    <button type="submit" class="submit-btn" id="registerBtn">
+                        <span>Register as Administrator</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Already have an admin account? <a href="login-register.html">Login Here</a></p>
+                    <p class="back-link"><a href="login-register.html"><i class="fas fa-arrow-left"></i> Back to Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-shield-alt"></i>
+                <h2>Privacy Policy</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3>Information We Collect</h3>
+                <p>We collect and store admin information including:</p>
+                <ul>
+                    <li>Personal details: Name, Email, Phone, Date of Birth, Gender</li>
+                    <li>Professional details: Employee ID, Department, Designation</li>
+                    <li>Security credentials: Encrypted password</li>
+                    <li>Activity logs: Login history, actions performed, IP addresses</li>
+                </ul>
+                <h3>How We Use Your Information</h3>
+                <p>Your data is used for:</p>
+                <ul>
+                    <li>Authentication and access control</li>
+                    <li>Audit trails and security monitoring</li>
+                    <li>System administration and support</li>
+                    <li>Communication of important updates</li>
+                </ul>
+                <h3>Data Security</h3>
+                <p>All admin data is encrypted using industry-standard encryption. Access to admin data is restricted to authorized personnel only.</p>
+                <h3>Data Retention</h3>
+                <p>Your data will be retained as long as your admin account is active. Upon account termination, data will be anonymized after 30 days.</p>
+                <h3>Your Rights</h3>
+                <p>You have the right to request access, correction, or deletion of your personal data. Contact the system administrator for such requests.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="acceptPrivacy">I Understand & Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="admin-register.js"></script>
+</body>
+</html>
