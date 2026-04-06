@@ -1,94 +1,70 @@
-﻿const express = require('express');
+const express = require('express');
 const cors = require('cors');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
+// --- Essential Middleware ---
+// Allows your frontend to call the API from a different address
 app.use(cors());
+// Parses JSON data from requests (like login details)
 app.use(express.json());
-app.use(express.static(__dirname));
 
-// Health check endpoint
+// --- API Routes (Must be defined BEFORE the catch-all route) ---
+
+// 1. Health Check Route
 app.get('/api/health', (req, res) => {
+    // This MUST return JSON, not HTML
     res.json({ success: true, message: 'API is running!' });
 });
 
-// Login endpoint (for demo)
+// 2. Login Route
 app.post('/api/auth/login', (req, res) => {
     const { email, password } = req.body;
-    
+    // Simple demo check
     if (email === 'user@upishield.com' && password === 'user123456') {
-        res.json({
+        return res.json({
             success: true,
             message: 'Login successful!',
-            token: 'demo-token-12345',
-            user: { email: 'user@upishield.com', role: 'user', username: 'DemoUser' }
+            token: 'demo-token-123',
+            user: { email: email, role: 'user', username: 'DemoUser' }
         });
     } else {
-        res.status(401).json({ success: false, message: 'Invalid credentials' });
+        return res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
 });
 
-// Register endpoint (for demo)
-app.post('/api/auth/register', (req, res) => {
-    res.json({ success: true, message: 'Registration successful!' });
-});
-
-// Check fraud endpoint
+// 3. Fraud Check Route (Example)
 app.post('/api/users/check-fraud', (req, res) => {
     const { amount, receiver } = req.body;
-    
     let riskScore = 5;
-    let reasons = ['Amount within safe limit'];
+    if (amount > 50000) riskScore = 85;
+    else if (amount > 25000) riskScore = 55;
     
-    if (amount > 50000) {
-        riskScore = 85;
-        reasons = ['Amount exceeds ₹50,000 threshold'];
-    } else if (amount > 25000) {
-        riskScore = 55;
-        reasons = ['Amount in moderate risk range'];
-    }
-    
-    res.json({
+    return res.json({
         success: true,
-        result: {
-            status: riskScore > 70 ? 'critical' : (riskScore > 40 ? 'warning' : 'safe'),
-            riskScore: riskScore,
-            reasons: reasons,
-            message: riskScore > 70 ? 'High risk!' : 'Transaction checked'
-        }
+        result: { status: riskScore > 70 ? 'critical' : 'warning', riskScore: riskScore, reasons: ['Amount checked'] }
     });
 });
 
-// Get transactions endpoint
+// 4. Get Transactions Route (Example)
 app.get('/api/users/transactions', (req, res) => {
-    const transactions = [
-        { id: 1, amount: 2500, receiver_name: "Rahul Sharma", status: "safe", transaction_date: new Date().toISOString() },
-        { id: 2, amount: 78500, receiver_name: "FakeMart", status: "suspicious", transaction_date: new Date().toISOString() }
-    ];
-    res.json({ success: true, transactions: transactions });
+    return res.json({ success: true, transactions: [] });
 });
 
-// Get profile endpoint
+// 5. Get Profile Route (Example)
 app.get('/api/users/profile', (req, res) => {
-    res.json({
-        success: true,
-        user: {
-            full_name: "Demo User",
-            email: "user@upishield.com",
-            phone: "9876543210",
-            upi_id: "demo@okhdfcbank",
-            username: "DemoUser"
-        }
-    });
+    return res.json({ success: true, user: { full_name: 'Demo User', email: 'user@upishield.com' } });
 });
 
-// Serve frontend for any other route
+// --- VERY IMPORTANT: This catch-all route must be LAST ---
+// It serves your frontend HTML file for any other request.
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'login-register.html'));
 });
 
+// --- Start the Server ---
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`✅ Server running correctly on port ${PORT}`);
 });
