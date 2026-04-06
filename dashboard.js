@@ -2,7 +2,7 @@
 // UPI Fraud Shield - Complete Dashboard
 // ============================================
 
-const API_URL = 'http://localhost:5001/api';
+const API_URL = 'https://upi-fraud-app.onrender.com/api';
 const authToken = localStorage.getItem('token') || sessionStorage.getItem('token');
 const currentUser = JSON.parse(localStorage.getItem('user') || sessionStorage.getItem('user') || '{}');
 
